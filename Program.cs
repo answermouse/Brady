@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Authentication;
+using Domain.Services;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 
@@ -18,6 +16,10 @@ builder.Services.AddAuthorization(options =>
 });
 builder.Services.AddRazorPages()
     .AddMicrosoftIdentityUI();
+
+// DI
+builder.Services.AddScoped<IWeatherService, WeatherService>();
+
 
 var app = builder.Build();
 
